@@ -88,6 +88,30 @@ export class AuthTokenService {
   }
 
   /**
+   * 生成Install Id登录专用JWT Token
+   *
+   * @param user 用户对象
+   * @returns 生成的JWT Token字符串
+   */
+  async generateInstallIdToken(
+    user: User,
+  ): Promise<string> {
+    const jti = uuidv4();
+
+    const payload: JwtPayload = {
+      sub: user.guid,
+      username: user.username,
+      email: user.email ?? undefined,
+      isAdmin: user.isAdmin,
+      jti,
+    };
+
+    const token = this.jwtService.sign(payload);
+
+    return token;
+  }
+
+  /**
    * 验证JWT Token
    * 验证Token的签名和有效期，并检查是否已被撤销
    *

@@ -152,7 +152,13 @@ export class AuthService {
 
     const user = await this.installIdService.login(loginDto);
 
-    return this.buildLoginResponse(user, id, uuid, deviceInfo);
+    const token = await this.tokenService.generateInstallIdToken(user);
+
+    return {
+      access_token: token,
+      type: 'access_token',
+      user: this.authResponseHelper.buildUserPayload(user),
+    };
   }
 
   /**
