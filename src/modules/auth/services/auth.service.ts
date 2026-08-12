@@ -148,11 +148,9 @@ export class AuthService {
   private async handleInstallIdLogin(
     loginDto: LoginDto,
   ): Promise<LoginResponse> {
-    const { id, uuid, deviceInfo } = loginDto;
-
     const user = await this.installIdService.login(loginDto);
 
-    const token = await this.tokenService.generateInstallIdToken(user);
+    const token = this.tokenService.generateInstallIdToken(user);
 
     return {
       access_token: token,

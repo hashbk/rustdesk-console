@@ -360,6 +360,7 @@ describe('User group integration', () => {
       undefined as never,
       undefined as never,
       undefined as never,
+      undefined as never,
     );
     const databaseInitService = new DatabaseInitService(
       userRepository,
