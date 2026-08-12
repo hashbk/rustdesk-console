@@ -87,8 +87,6 @@ export class AuthInstallIdService {
       userGroupGuid,
     });
 
-    await this.userRepository.save(user);
-
     return user;
   }
 }
