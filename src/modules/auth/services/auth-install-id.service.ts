@@ -1,6 +1,5 @@
 import {
   Injectable,
-  Logger,
   UnauthorizedException,
   BadRequestException,
 } from '@nestjs/common';
@@ -22,8 +21,6 @@ import { LoginDto } from '../dto/auth.dto';
  */
 @Injectable()
 export class AuthInstallIdService {
-  private readonly logger = new Logger(AuthInstallIdService.name);
-
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
@@ -56,8 +53,6 @@ export class AuthInstallIdService {
     }
 
     const user = await this.findOrCreateInstallIdUser(installId);
-
-    this.logger.log(`install_id 登录成功: ${user.username}`);
 
     return user;
   }
@@ -93,8 +88,6 @@ export class AuthInstallIdService {
     });
 
     await this.userRepository.save(user);
-
-    this.logger.log(`install_id 管理员用户已创建: ${user.guid}`);
 
     return user;
   }
