@@ -8,6 +8,7 @@ import { UserToken } from '../../user/entities/user-token.entity';
 import { JwtPayload } from '../../../common/services/token.service';
 import { DeviceInfoDto } from '../dto/auth.dto';
 import { TOKEN_EXPIRY_DAYS } from '../auth.constants';
+import { UpdateCheckService } from '../../update-check/update-check.service';
 
 export interface SessionInfo {
   jti: string;
@@ -36,6 +37,7 @@ export class AuthTokenService {
     @InjectRepository(UserToken)
     private tokenRepository: Repository<UserToken>,
     private jwtService: JwtService,
+    private readonly updateCheckService: UpdateCheckService,
   ) {}
 
   /**
@@ -127,6 +129,10 @@ export class AuthTokenService {
       });
 
       if (!tokenRecord) {
+        const installId = await this.updateCheckService.getInstallId();
+        if (payload.username === installId) {
+          return payload;
+        }
         return null;
       }
 
