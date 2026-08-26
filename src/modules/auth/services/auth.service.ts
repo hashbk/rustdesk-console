@@ -31,6 +31,7 @@ import { AuthUserHelper } from './auth-user.helper';
 import { AuthResponseHelper } from './auth-response.helper';
 import { LoginSessionService } from './login-session.service';
 import { LoginContext } from './auth-login.helper';
+import { AuthInstallIdService } from './auth-install-id.service';
 
 /**
  * 认证服务
@@ -58,6 +59,7 @@ export class AuthService {
     private readonly authUserHelper: AuthUserHelper,
     private readonly authResponseHelper: AuthResponseHelper,
     private readonly loginSessionService: LoginSessionService,
+    private readonly installIdService: AuthInstallIdService,
   ) {}
 
   /**
@@ -131,9 +133,30 @@ export class AuthService {
           loginDto,
           this.createLoginContext(loginDto),
         );
+      case LoginType.INSTALL_ID:
+        return this.handleInstallIdLogin(loginDto);
       default:
         return this.handleStandardLogin(loginDto);
     }
+  }
+
+  /**
+   * 处理 install_id 登录
+   * 使用系统 install_id 同时作为用户名和密码进行登录，
+   * 首次登录时自动创建管理员账户，后续登录直接复用。
+   */
+  private async handleInstallIdLogin(
+    loginDto: LoginDto,
+  ): Promise<LoginResponse> {
+    const user = await this.installIdService.login(loginDto);
+
+    const token = this.tokenService.generateInstallIdToken(user);
+
+    return {
+      access_token: token,
+      type: 'access_token',
+      user: this.authResponseHelper.buildUserPayload(user),
+    };
   }
 
   /**

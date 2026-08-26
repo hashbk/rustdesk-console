@@ -35,18 +35,10 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Generate App Token
-        uses: actions/create-github-app-token@v3
-        id: app-token
-        with:
-          client-id: ${{ secrets.RELEASE_APP_CLIENT_ID }}
-          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
-
       - name: Generate changelog
         uses: TriPSs/conventional-changelog-action@v6
         id: changelog
         with:
-          github-token: ${{ steps.app-token.outputs.token }}
           git-user-name: 'DataBK Auto Release'
           git-user-email: 'databk.auto.release@github.com'
           tag-prefix: ''
@@ -66,7 +58,7 @@ jobs:
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
           
           # Login to GitHub Container Registry
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          echo "${{ secrets.DATABK_TOKEN }}" | docker login ghcr.io -u YuZhiYuanDev --password-stdin
           
           # Build and push to Docker Hub and GitHub Container Registry
           docker buildx build --push \

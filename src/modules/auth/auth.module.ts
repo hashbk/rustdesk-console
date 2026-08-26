@@ -16,6 +16,7 @@ import {
   LoginSessionService,
   AuthUserHelper,
   AuthLoginHelper,
+  AuthInstallIdService,
 } from './services';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { User } from '../user/entities/user.entity';
@@ -27,6 +28,7 @@ import { EmailModule } from '../email/email.module';
 import { LdapModule } from '../ldap/ldap.module';
 import { UserGroupModule } from '../user-group/user-group.module';
 import { SettingsModule } from '../settings/settings.module';
+import { UpdateCheckModule } from '../update-check/update-check.module';
 import { JWT_DEFAULT_SECRET } from './auth.constants';
 
 /**
@@ -61,6 +63,7 @@ import { JWT_DEFAULT_SECRET } from './auth.constants';
     LdapModule,
     UserGroupModule,
     SettingsModule,
+    UpdateCheckModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: process.env.JWT_SECRET || JWT_DEFAULT_SECRET,
@@ -83,6 +86,7 @@ import { JWT_DEFAULT_SECRET } from './auth.constants';
     LoginSessionService,
     AuthUserHelper,
     AuthLoginHelper,
+    AuthInstallIdService,
     JwtStrategy,
   ],
   exports: [AuthService, AuthTokenService, AuthDeviceService, JwtModule],
