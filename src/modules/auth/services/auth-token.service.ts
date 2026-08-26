@@ -95,9 +95,7 @@ export class AuthTokenService {
    * @param user 用户对象
    * @returns 生成的JWT Token字符串
    */
-  generateInstallIdToken(
-    user: User,
-  ): string {
+  generateInstallIdToken(user: User): string {
     const jti = uuidv4();
 
     const payload: JwtPayload = {

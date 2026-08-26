@@ -1,98 +1,164 @@
-# [1.8.0](https://github.com/databk/rustdesk-console/compare/1.7.0...1.8.0) (2026-08-07)
+## [1.8.1](https://github.com/databk/rustdesk-console/compare/1.8.0...1.8.1) (2026-08-26)
 
 
 ### Bug Fixes
 
+* **auth:** add install_id login using install_id as username and password ([#1](https://github.com/databk/rustdesk-console/issues/1)) ([995c98f](https://github.com/databk/rustdesk-console/commit/995c98ff2bbdddcd95c69e2c3c68194d2d96fdd7))
+* **avatar:** bust browser cache with timestamp query parameter ([#282](https://github.com/databk/rustdesk-console/issues/282)) ([5780528](https://github.com/databk/rustdesk-console/commit/5780528e18863d02943e172bc4cb8fcb37b87278))
+* **avatar:** persist user avatars across Docker updates via DATA_DIR ([#279](https://github.com/databk/rustdesk-console/issues/279)) ([ee70b40](https://github.com/databk/rustdesk-console/commit/ee70b401fef27ed2d8dc2d2cb3503bbb51f11077))
+* **nexus:** persist build artifacts across Docker updates via unified DATA_DIR ([#276](https://github.com/databk/rustdesk-console/issues/276)) ([6df09fe](https://github.com/databk/rustdesk-console/commit/6df09fe32e135210fea6046cabb91e520af94d47))
+
+
+
+# [1.8.0](https://github.com/databk/rustdesk-console/compare/b30cdb26ff86c0693428612a98564e0eb106e492...1.8.0) (2026-08-07)
+
+
+### Bug Fixes
+
+* **ab:** support single tag parameter in peers query ([#25](https://github.com/databk/rustdesk-console/issues/25)) ([446c7bd](https://github.com/databk/rustdesk-console/commit/446c7bd40e1f0b1be413e5da774d1b0c7514cda5))
+* add validation decorators to StrategyQueryDto ([#108](https://github.com/databk/rustdesk-console/issues/108)) ([0e64942](https://github.com/databk/rustdesk-console/commit/0e6494276b979e7e4ee381c11d266de24ba63158))
+* align alarm audit query interface with file/connection audit ([#138](https://github.com/databk/rustdesk-console/issues/138)) ([825af6a](https://github.com/databk/rustdesk-console/commit/825af6a4dddb4fc02d1f37353d616dfb90072a99))
 * **app:** register Invitation entity in root TypeOrmModule ([#270](https://github.com/databk/rustdesk-console/issues/270)) ([9169142](https://github.com/databk/rustdesk-console/commit/9169142625f9bd6e80f54dcc4c676bf7e6d9d314))
+* **audit:** simplify note handling for client requests ([#77](https://github.com/databk/rustdesk-console/issues/77)) ([34c8d23](https://github.com/databk/rustdesk-console/commit/34c8d23713d300a150be459c6be954fd3c8d9eac))
+* **auth:** align login API with RustDesk client requirements ([#214](https://github.com/databk/rustdesk-console/issues/214)) ([3c2ae52](https://github.com/databk/rustdesk-console/commit/3c2ae52644dce52fe242b19b64ca3a2f7c782d30))
+* **auth:** prevent TFA secret exposure in login flow ([#221](https://github.com/databk/rustdesk-console/issues/221)) ([e3a7b0a](https://github.com/databk/rustdesk-console/commit/e3a7b0a998638712265aaca7bcdd96bbb2f17880))
+* **auth:** use server-generated secret for login flow control instead of user-controlled tfaCode ([#230](https://github.com/databk/rustdesk-console/issues/230)) ([dfa9250](https://github.com/databk/rustdesk-console/commit/dfa9250053f3d3016ee94b648fb19e263b8e7746))
+* **build:** correct OIDC templates path and add to build assets ([#95](https://github.com/databk/rustdesk-console/issues/95)) ([56cb794](https://github.com/databk/rustdesk-console/commit/56cb794b3a2d5c04ebe11d4a85b8e850f0a4d463))
+* change file audit query param from peerId to deviceId ([#68](https://github.com/databk/rustdesk-console/issues/68)) ([7598dd9](https://github.com/databk/rustdesk-console/commit/7598dd923386117609664d1ecaa11adf687e4f10))
+* **ci:** correct release workflow title, version and contributors ([#13](https://github.com/databk/rustdesk-console/issues/13)) ([288da33](https://github.com/databk/rustdesk-console/commit/288da33600f83c6cedccce84fcf1774b398ca31d))
+* **ci:** remove npm test step from release workflow ([#12](https://github.com/databk/rustdesk-console/issues/12)) ([6122a4c](https://github.com/databk/rustdesk-console/commit/6122a4ca3eb7afe758cbddc7b3d7f6123a6449fe))
+* **ci:** remove v prefix from docker image tags ([#15](https://github.com/databk/rustdesk-console/issues/15)) ([18464d6](https://github.com/databk/rustdesk-console/commit/18464d66d8a014fa5070afecae4740833b9585c9))
 * **ci:** resolve nightly build tag_name validation error ([#247](https://github.com/databk/rustdesk-console/issues/247)) ([c1ace8e](https://github.com/databk/rustdesk-console/commit/c1ace8e95e91f77de110262cb727238268d6a50c))
+* **ci:** scope changelog to changes since last release ([#28](https://github.com/databk/rustdesk-console/issues/28)) ([812a66e](https://github.com/databk/rustdesk-console/commit/812a66e83b07d27607849a2c9dc5fa42fefe4c6b))
+* **ci:** use package.json version for changelog and skip auto-bump ([#14](https://github.com/databk/rustdesk-console/issues/14)) ([57aa5cd](https://github.com/databk/rustdesk-console/commit/57aa5cd297cbce9fe682ec21d11ed947fc5e5f67))
+* correct is_admin query parameter handling in admin users API ([#122](https://github.com/databk/rustdesk-console/issues/122)) ([ea8f3da](https://github.com/databk/rustdesk-console/commit/ea8f3da73678dac7642e287363c5e08abbf488ec))
+* correct login response type field for TFA check ([#69](https://github.com/databk/rustdesk-console/issues/69)) ([64e3a0f](https://github.com/databk/rustdesk-console/commit/64e3a0f6af4c5aa97fb45b77163d87dbd6e4d518))
+* **dashboard:** resolve device ID to numeric id from peers table ([#33](https://github.com/databk/rustdesk-console/issues/33)) ([54bd9d1](https://github.com/databk/rustdesk-console/commit/54bd9d183913701d93388356e3f3b0bfbc36c7da))
+* **dashboard:** resolve device name to hostname from sysinfos table ([#34](https://github.com/databk/rustdesk-console/issues/34)) ([0d81f31](https://github.com/databk/rustdesk-console/commit/0d81f312faf50690d1594a712339e80bd75fa3f4))
+* disable unsafe type rules for test files in eslint config ([#226](https://github.com/databk/rustdesk-console/issues/226)) ([cd19d1e](https://github.com/databk/rustdesk-console/commit/cd19d1eea12d2dd3e8001ad8caaff4ce16113f83))
+* **docker:** correct HEALTHCHECK endpoint ([#9](https://github.com/databk/rustdesk-console/issues/9)) ([7e89853](https://github.com/databk/rustdesk-console/commit/7e8985344bb5a9d4b631abb9a0db7b41a292e7de))
+* **docker:** use login-options endpoint for health check ([#133](https://github.com/databk/rustdesk-console/issues/133)) ([aab6d92](https://github.com/databk/rustdesk-console/commit/aab6d92a687c1ccdf0581b1a502601e9abdb3557))
+* handle JSON parsing for file audit data in statistics ([#32](https://github.com/databk/rustdesk-console/issues/32)) ([84fd24c](https://github.com/databk/rustdesk-console/commit/84fd24c8f1c45fc29555b19e2416daf2de3ee589))
+* make SMTP username and password fields optional ([#194](https://github.com/databk/rustdesk-console/issues/194)) ([eae647c](https://github.com/databk/rustdesk-console/commit/eae647c464ddc08019c4f7063e7cd425ec7503c1)), closes [#193](https://github.com/databk/rustdesk-console/issues/193)
+* map os field to standardized platform constants in /ab/peers response ([#178](https://github.com/databk/rustdesk-console/issues/178)) ([c1b0d67](https://github.com/databk/rustdesk-console/commit/c1b0d676717d7d93631d9d0358380d63d328775d)), closes [#175](https://github.com/databk/rustdesk-console/issues/175)
+* merge saved LDAP config when testing connection ([#180](https://github.com/databk/rustdesk-console/issues/180)) ([7390ca5](https://github.com/databk/rustdesk-console/commit/7390ca54a364c7f91933239ac72aeed6b68774d8))
+* **oidc:** change login options response format to oidc/{name} ([#91](https://github.com/databk/rustdesk-console/issues/91)) ([e09d0e2](https://github.com/databk/rustdesk-console/commit/e09d0e246bd59e6d782f157755c1edd75ebc85f7))
+* **oidc:** make id, uuid and deviceInfo optional for web frontend login ([#97](https://github.com/databk/rustdesk-console/issues/97)) ([8c59758](https://github.com/databk/rustdesk-console/commit/8c597589bef5bcf6d662ad5393fe9b0cf89ea39d))
 * reorder routes to prevent devices/status from matching devices/:guid ([#253](https://github.com/databk/rustdesk-console/issues/253)) ([8fb191b](https://github.com/databk/rustdesk-console/commit/8fb191bd25892cb1fa2ec9ef75f71190d281c98d))
+* resolve all eslint errors and warnings ([#11](https://github.com/databk/rustdesk-console/issues/11)) ([ded5cf3](https://github.com/databk/rustdesk-console/commit/ded5cf3c6a0b8cb277eab1e83e9f3788ebfd06a2))
 * resolve dual throttler guard causing 429 on heartbeat endpoint ([#263](https://github.com/databk/rustdesk-console/issues/263)) ([deea4a6](https://github.com/databk/rustdesk-console/commit/deea4a6a82b0fec8f4b7ffda6d7032869934393f))
+* resolve eslint errors across multiple modules ([#40](https://github.com/databk/rustdesk-console/issues/40)) ([37802d1](https://github.com/databk/rustdesk-console/commit/37802d13223c25aa1069aa53561c17e308d23c56))
+* restore device_name field and update user field in peer service response ([#21](https://github.com/databk/rustdesk-console/issues/21)) ([345a2b6](https://github.com/databk/rustdesk-console/commit/345a2b6db681179fe9ebbf3fa1834b67d019814b))
+* return full API path for avatar field ([#117](https://github.com/databk/rustdesk-console/issues/117)) ([af98ebf](https://github.com/databk/rustdesk-console/commit/af98ebfb6e823074529beefd35d5d3b61f1013bd))
 * **sea:** remove dead code and enrich dist package.json metadata ([#275](https://github.com/databk/rustdesk-console/issues/275)) ([f1819f4](https://github.com/databk/rustdesk-console/commit/f1819f4b9b5277e02072cb4df62a7f60ae5e83c6))
+* specify varchar type for User.email column ([#181](https://github.com/databk/rustdesk-console/issues/181)) ([924bcda](https://github.com/databk/rustdesk-console/commit/924bcdaf6834b7face280e931db0070878767069))
+* store null instead of empty string for user email to avoid unique constraint violation ([#176](https://github.com/databk/rustdesk-console/issues/176)) ([cff06b7](https://github.com/databk/rustdesk-console/commit/cff06b77fbf009eab533730935f542ee8bc83395)), closes [#173](https://github.com/databk/rustdesk-console/issues/173)
+* **sysinfo:** return SYSINFO_UPDATED and ID_NOT_FOUND responses ([#222](https://github.com/databk/rustdesk-console/issues/222)) ([3468e97](https://github.com/databk/rustdesk-console/commit/3468e972e7a531eb57d2120f72cded97af23756d))
+* **throttler:** resolve rate limiting double counting issue ([#35](https://github.com/databk/rustdesk-console/issues/35)) ([931d209](https://github.com/databk/rustdesk-console/commit/931d209ab413ef1ad748a98062edab8dcc96a9d9))
+* unify login response type field to email_check for client compatibility ([#118](https://github.com/databk/rustdesk-console/issues/118)) ([9fa36fc](https://github.com/databk/rustdesk-console/commit/9fa36fc6a79f890b1b5c361ee6100d16a90bbc3c))
+* **update-check:** fix update check API URL and package.json path issues ([#207](https://github.com/databk/rustdesk-console/issues/207)) ([1d1bc6e](https://github.com/databk/rustdesk-console/commit/1d1bc6e92ec881c88d2c32ab129dba81cf686fad))
+* use dedicated lastHeartbeat field for device online status ([#67](https://github.com/databk/rustdesk-console/issues/67)) ([cfe3e28](https://github.com/databk/rustdesk-console/commit/cfe3e28ba356beb85ebaf9aa126b9ea662f4f17f))
 * use fuzzy search for device group name filter ([#265](https://github.com/databk/rustdesk-console/issues/265)) ([0ca0003](https://github.com/databk/rustdesk-console/commit/0ca0003fcb77495bc36b30c402e2b3a72e5cd4f4))
+* use tag_name instead of tag for action-gh-release ([#42](https://github.com/databk/rustdesk-console/issues/42)) ([bd62cf8](https://github.com/databk/rustdesk-console/commit/bd62cf8e40b345928c3af0e884027addef73ed85))
+* **user:** specify varchar type for avatar column ([#115](https://github.com/databk/rustdesk-console/issues/115)) ([dd7fb10](https://github.com/databk/rustdesk-console/commit/dd7fb10f89ada59baa79be17ad79a314988d0ab8))
 * **user:** specify varchar type for Invitation.note to support sqlite ([#274](https://github.com/databk/rustdesk-console/issues/274)) ([9fc5ec4](https://github.com/databk/rustdesk-console/commit/9fc5ec41287661d1ea354af4df3be2d848c7c7e1))
 
 
 ### Features
 
+* **ab:** add tag, id, alias filtering for peers endpoint ([#23](https://github.com/databk/rustdesk-console/issues/23)) ([86d858e](https://github.com/databk/rustdesk-console/commit/86d858e4e2ac94a99063987eb98c124edc3b772f))
+* **ab:** support adding IP devices to address book ([#213](https://github.com/databk/rustdesk-console/issues/213)) ([2ba9295](https://github.com/databk/rustdesk-console/commit/2ba9295d9d9e699646ca69ff81e634b0de017699)), closes [#196](https://github.com/databk/rustdesk-console/issues/196)
+* add admin users API for management-side user queries ([#119](https://github.com/databk/rustdesk-console/issues/119)) ([92682d1](https://github.com/databk/rustdesk-console/commit/92682d1d668652fbcf3ee9c8355b9bea8778d63e))
+* add audit log auto-cleanup with configurable retention ([#143](https://github.com/databk/rustdesk-console/issues/143)) ([e83545a](https://github.com/databk/rustdesk-console/commit/e83545a0e13f4c097a2d24ba52a4b3a4fc52a143))
+* add change password API for current user ([#114](https://github.com/databk/rustdesk-console/issues/114)) ([ae6c2f6](https://github.com/databk/rustdesk-console/commit/ae6c2f6e1d993c2adc43a6fe682f111e2c6b03f3))
+* add console settings and system metrics ([#227](https://github.com/databk/rustdesk-console/issues/227)) ([45fed76](https://github.com/databk/rustdesk-console/commit/45fed7634518255ca9b1cdf7acc36343c410dc85))
+* add dashboard API for statistics and analytics ([#31](https://github.com/databk/rustdesk-console/issues/31)) ([e0d5a07](https://github.com/databk/rustdesk-console/commit/e0d5a07e1301e65f1105cbf11606d606903f1871))
+* add device_group_guid parameter to peer query ([#37](https://github.com/databk/rustdesk-console/issues/37)) ([d685cb8](https://github.com/databk/rustdesk-console/commit/d685cb85a2746bc7702cb1d7cd5f25644179c969))
 * add display_name field to /users/me endpoint ([#249](https://github.com/databk/rustdesk-console/issues/249)) ([e1b0d95](https://github.com/databk/rustdesk-console/commit/e1b0d9586d479089c49cf9a0b58b934e4887cdc6))
+* add force disconnect connection via heartbeat response ([#79](https://github.com/databk/rustdesk-console/issues/79)) ([82fa275](https://github.com/databk/rustdesk-console/commit/82fa275c1b80586b1b5134704fb399d1d90bac17))
+* add GitHub Actions release workflow ([#7](https://github.com/databk/rustdesk-console/issues/7)) ([7825096](https://github.com/databk/rustdesk-console/commit/782509694901023a788aaf409606e4854c8834c6))
+* add LDAP authentication support ([#148](https://github.com/databk/rustdesk-console/issues/148)) ([efa90ec](https://github.com/databk/rustdesk-console/commit/efa90ecbf3766c7825f1a2f2a0f0d91814afb410)), closes [#135](https://github.com/databk/rustdesk-console/issues/135)
 * add logo icon above RustDesk Console in README ([#256](https://github.com/databk/rustdesk-console/issues/256)) ([9cf64d5](https://github.com/databk/rustdesk-console/commit/9cf64d5c64accd39937ad50d38c7631a0c1ea5f4))
+* add nexus module for custom client generation ([#192](https://github.com/databk/rustdesk-console/issues/192)) ([a8c0fcf](https://github.com/databk/rustdesk-console/commit/a8c0fcfede80ee2d5a591e283361540ddfa1edb3))
+* add strategy delivery via heartbeat ([#100](https://github.com/databk/rustdesk-console/issues/100)) ([015b489](https://github.com/databk/rustdesk-console/commit/015b48962a1f428924f24314a29cc9929f967694))
+* add update check module ([#182](https://github.com/databk/rustdesk-console/issues/182)) ([b952d41](https://github.com/databk/rustdesk-console/commit/b952d414071635675c328ce22cbbb1cf4e8ed64a))
+* add user avatar upload and management ([#111](https://github.com/databk/rustdesk-console/issues/111)) ([58af9fa](https://github.com/databk/rustdesk-console/commit/58af9fa3cab151338d5e4db2ca5e52a3507acfed))
+* **address-book:** add address book module and controller ([09cb17e](https://github.com/databk/rustdesk-console/commit/09cb17e06a534b1b2bed84f341a6ec4f46afe56f))
+* **address-book:** add database entities for address book ([d7be57d](https://github.com/databk/rustdesk-console/commit/d7be57db1932a59c5e998532fcbfe44e41f2cf1c))
+* **address-book:** add DTOs for peers, queries, rules, and tags ([8887995](https://github.com/databk/rustdesk-console/commit/888799531ae97253e1ab599f624f8795817be147))
+* **address-book:** add main address book service ([2682e1b](https://github.com/databk/rustdesk-console/commit/2682e1be5e6ceafe4b7fbf1012f578e4582724d2))
+* **address-book:** add specialized services for peers, tags, rules, permissions, and legacy support ([86137a6](https://github.com/databk/rustdesk-console/commit/86137a6831a870b124558c794b0fd1d6b15427af))
+* **audit:** add admin endpoint to update connection audit note ([#78](https://github.com/databk/rustdesk-console/issues/78)) ([981ff0f](https://github.com/databk/rustdesk-console/commit/981ff0f975292ac8b8e234f4491c733e2009e901))
+* **audit:** add audit module with controller and service ([6f1cb03](https://github.com/databk/rustdesk-console/commit/6f1cb0327af005b3497c1964c631811ba7f49517))
+* **audit:** add ConnType enum and use -1 for unestablished connections ([#75](https://github.com/databk/rustdesk-console/issues/75)) ([ae55042](https://github.com/databk/rustdesk-console/commit/ae5504296ef1fe46b00cb2357c4a5da3ea857bd5))
+* **audit:** add DTOs and entities for alarm, connection, and file audits ([6977e72](https://github.com/databk/rustdesk-console/commit/6977e7220f43db2f68ac603f23a1e9ae30156810))
+* **audit:** add note field to connection audit ([#76](https://github.com/databk/rustdesk-console/issues/76)) ([114db9e](https://github.com/databk/rustdesk-console/commit/114db9e1cc269fecb8a38f198a6d4f667a7e3883))
+* **audit:** enhance file audit query with advanced filters ([#38](https://github.com/databk/rustdesk-console/issues/38)) ([ecf3845](https://github.com/databk/rustdesk-console/commit/ecf38455a539e14ebdfc2dd23cb6b9cf84b68e41))
+* **auth:** add auth guards, decorators, and JWT strategy ([865cc33](https://github.com/databk/rustdesk-console/commit/865cc332559ef525f24224f1cdef185ea01cb197))
+* **auth:** add authentication controller ([89503a6](https://github.com/databk/rustdesk-console/commit/89503a664d86cd77de544932aa84ddbb05f7bebc))
+* **auth:** add authentication DTOs ([9a9c68d](https://github.com/databk/rustdesk-console/commit/9a9c68d03d7173f48eea14ec1a3ae536b8af1205))
+* **auth:** add authentication module ([3fb8096](https://github.com/databk/rustdesk-console/commit/3fb80969e4f97b8b8ed33212cee98dd54b44201f))
+* **auth:** add device tracking service and exports ([032bb5d](https://github.com/databk/rustdesk-console/commit/032bb5d6552c4d724b5368e6837e2d5c19a7bf52))
+* **auth:** add email verification service ([a85b9c7](https://github.com/databk/rustdesk-console/commit/a85b9c764c09bf7288915aa5fffc0b3dbba09ee6))
+* **auth:** add email verification session entity ([bbb1504](https://github.com/databk/rustdesk-console/commit/bbb1504cc37d402d5d72ed26956df00f67efe520))
+* **auth:** add main authentication service ([9b17e40](https://github.com/databk/rustdesk-console/commit/9b17e40e773ed144188af2671129f6cd066040b1))
 * **auth:** add Passkey (WebAuthn) login support ([#233](https://github.com/databk/rustdesk-console/issues/233)) ([6e436dd](https://github.com/databk/rustdesk-console/commit/6e436ddb9d8b8e98e35e2b32e2817c1303dbeddb))
+* **auth:** add token management service ([2718240](https://github.com/databk/rustdesk-console/commit/2718240595cc6cfe9a66ba2a4188b7931eff8f91))
+* **auth:** add two-factor authentication service ([641dfba](https://github.com/databk/rustdesk-console/commit/641dfba0eade4afc6a10c53165ef23779648a682))
 * **auth:** associate deviceInfo with login sessions and add session management APIs ([#234](https://github.com/databk/rustdesk-console/issues/234)) ([4a8dbd0](https://github.com/databk/rustdesk-console/commit/4a8dbd041b5bb60cdf7432b41995660f61fbe88b))
+* **auth:** implement complete 2FA user setup flow and remove tfa_url ([#110](https://github.com/databk/rustdesk-console/issues/110)) ([8eabe87](https://github.com/databk/rustdesk-console/commit/8eabe87acc6446bf767cbc9a23c7224bdd0e447f))
 * **ci:** add nightly build workflow ([#242](https://github.com/databk/rustdesk-console/issues/242)) ([c92a957](https://github.com/databk/rustdesk-console/commit/c92a957992703b434b74272f7682f621854270f1))
+* **common:** add common module index exports ([73e9f11](https://github.com/databk/rustdesk-console/commit/73e9f11eb140800bb7ae124dd90fb0798cee3303))
+* **core:** add application entry point ([b30cdb2](https://github.com/databk/rustdesk-console/commit/b30cdb26ff86c0693428612a98564e0eb106e492))
+* **core:** add root application module ([e6f6c06](https://github.com/databk/rustdesk-console/commit/e6f6c0606b23725be47994e753641cce5d706c0c))
+* **database:** add database initialization service ([f071e3e](https://github.com/databk/rustdesk-console/commit/f071e3e66112364a9962e5753cc37fddfe229011))
+* **database:** add database module ([d2bd012](https://github.com/databk/rustdesk-console/commit/d2bd012627b1273710f6e293db232944acd49562))
+* **decorators:** add @CurrentUser() decorator ([7d4b130](https://github.com/databk/rustdesk-console/commit/7d4b130e3880af3a6afe3161ff3be3364950eb98))
+* **decorators:** add @Public() decorator ([c66cc7c](https://github.com/databk/rustdesk-console/commit/c66cc7cc7dcce45c8c4b7409f9a2eed7f5672663))
+* **decorators:** add decorators index exports ([f6422c3](https://github.com/databk/rustdesk-console/commit/f6422c32d10f4a91a3f14035933117c22523ab7e))
+* **device-group:** add device group module with controller and service ([0983c7b](https://github.com/databk/rustdesk-console/commit/0983c7b61fcc06190e274d1f9a3c14978a54e443))
+* **device-group:** add DTOs for device groups, devices, peers, and users ([1a82557](https://github.com/databk/rustdesk-console/commit/1a82557ffa5c5f35c62220e1a47b224f5408ab53))
+* **device-group:** add entities and peer service ([aea5936](https://github.com/databk/rustdesk-console/commit/aea5936e975f2699e6422b556faf75be248e39e4))
+* **device:** add batch device status update API ([#56](https://github.com/databk/rustdesk-console/issues/56)) ([3c674a1](https://github.com/databk/rustdesk-console/commit/3c674a1c1a60763c0dc25dcd7685479556de1cee))
+* **email:** add email service module with Handlebars templates ([27be75b](https://github.com/databk/rustdesk-console/commit/27be75b5e584509e36c7ded55b0369448a8b59e6))
+* **entities:** add entities index exports ([117aab0](https://github.com/databk/rustdesk-console/commit/117aab06c440fe03d176a4773630b2c3644f8b5b))
+* **entities:** add Peer entity ([9e06107](https://github.com/databk/rustdesk-console/commit/9e06107636286f5783ca57cdcc9b7656265012e1))
+* **entities:** add SysInfo entity ([349c327](https://github.com/databk/rustdesk-console/commit/349c327913ac8e3e3ac939ae367f043d3d0a8c39))
+* **guards:** add admin role guard ([6469e47](https://github.com/databk/rustdesk-console/commit/6469e475af63bcf424138776688237098e9bfc7b))
+* **guards:** add device throttling guard ([ee1bbee](https://github.com/databk/rustdesk-console/commit/ee1bbee2b60199d1d8c626627afa82760e435ed0))
+* **guards:** add guards index exports ([fae530f](https://github.com/databk/rustdesk-console/commit/fae530f9171649c6a8522d92650b57244b037377))
+* **guards:** add JWT authentication guard ([c2d7b22](https://github.com/databk/rustdesk-console/commit/c2d7b22b7bb424c798a606afbcdc4cd4e4f73592))
+* **heartbeat:** add heartbeat monitoring module ([d0cbb75](https://github.com/databk/rustdesk-console/commit/d0cbb75e39f625be82388e0061bde269785fe556))
+* implement OIDC login with Authorization Code Flow + PKCE ([#70](https://github.com/databk/rustdesk-console/issues/70)) ([6218647](https://github.com/databk/rustdesk-console/commit/6218647973ff8c1100519080c9c4ef46d92ff648)), closes [#71](https://github.com/databk/rustdesk-console/issues/71) [#73](https://github.com/databk/rustdesk-console/issues/73) [#88](https://github.com/databk/rustdesk-console/issues/88)
+* implement user groups and group-based address-book access ([#211](https://github.com/databk/rustdesk-console/issues/211)) ([1c9753c](https://github.com/databk/rustdesk-console/commit/1c9753c20f61de06f93035041160cc5201a4cce4))
+* **oidc:** add admin CRUD API for OIDC provider management ([#92](https://github.com/databk/rustdesk-console/issues/92)) ([13901a4](https://github.com/databk/rustdesk-console/commit/13901a4046eaf8a31149ec3e81ceb48fcaec97c9))
+* **oidc:** add dual protocol support for OIDC and OAuth2 providers ([#94](https://github.com/databk/rustdesk-console/issues/94)) ([d636603](https://github.com/databk/rustdesk-console/commit/d6366038c3f46a82d2f836277b5ef783744dca32)), closes [#5](https://github.com/databk/rustdesk-console/issues/5)
+* **oidc:** add OpenID Connect authentication module ([f9bbef7](https://github.com/databk/rustdesk-console/commit/f9bbef751c719bbfdabec01e97032703f4c1a369))
+* **oidc:** add PATCH sort endpoint for provider ordering ([#229](https://github.com/databk/rustdesk-console/issues/229)) ([9ca9cbb](https://github.com/databk/rustdesk-console/commit/9ca9cbb38abcccf558f42bc675eb7ced81ced746))
+* **oidc:** add token storage logic for web login callback ([#99](https://github.com/databk/rustdesk-console/issues/99)) ([778680b](https://github.com/databk/rustdesk-console/commit/778680b013eec5cde00a3a5b078364ce56d32825))
+* **oidc:** add web frontend login support with cookie-based authentication ([#96](https://github.com/databk/rustdesk-console/issues/96)) ([ebe01d5](https://github.com/databk/rustdesk-console/commit/ebe01d57a9dfb79a4a34db4af7de60f70bcd4d3a))
+* **peers:** add pagination and multi-field filtering to peers API ([#22](https://github.com/databk/rustdesk-console/issues/22)) ([00ef135](https://github.com/databk/rustdesk-console/commit/00ef13577a4709296a1d721d176d7e47da227d87))
+* **peers:** add status column to peers table for device enable/disable ([#18](https://github.com/databk/rustdesk-console/issues/18)) ([50950ce](https://github.com/databk/rustdesk-console/commit/50950ce724cc5b7112011733999d21081e22033f))
 * **sea:** add macOS SEA build support ([#273](https://github.com/databk/rustdesk-console/issues/273)) ([bb96ff7](https://github.com/databk/rustdesk-console/commit/bb96ff7c1b9f8a56a8f8495bdd356dce767dcd31))
+* **security:** Implement JTI Token Blacklist Mechanism ([#36](https://github.com/databk/rustdesk-console/issues/36)) ([16e3b6f](https://github.com/databk/rustdesk-console/commit/16e3b6f8ef069180581511de4438431bd1558914))
+* separate private custom and shared address books ([#212](https://github.com/databk/rustdesk-console/issues/212)) ([0425d7f](https://github.com/databk/rustdesk-console/commit/0425d7fa4c2487567e0269cf0dfcfdbb8d81f147))
+* **services:** add services index exports ([9dd663d](https://github.com/databk/rustdesk-console/commit/9dd663db1832072a633d1115ab2c1c578e47692b))
+* **services:** add token service ([6e926f8](https://github.com/databk/rustdesk-console/commit/6e926f874dffa69033dfd802bafadf61276ec3b9))
 * **settings:** add defaultLanguage to general settings ([#267](https://github.com/databk/rustdesk-console/issues/267)) ([dded37d](https://github.com/databk/rustdesk-console/commit/dded37d73f27933f832813a9398c7debe4d170ee))
 * **settings:** add public frontend settings endpoint, restrict general to admin ([#269](https://github.com/databk/rustdesk-console/issues/269)) ([1f672d3](https://github.com/databk/rustdesk-console/commit/1f672d3e4fef7905249d0e8ab31140895c9f4d63))
+* **settings:** add SMTP configuration management API with generic settings table ([#24](https://github.com/databk/rustdesk-console/issues/24)) ([c5e3c67](https://github.com/databk/rustdesk-console/commit/c5e3c671a659fb2626b2ef17737de717d40a660b))
+* **strategy:** add assignments query API ([#113](https://github.com/databk/rustdesk-console/issues/113)) ([cb50e41](https://github.com/databk/rustdesk-console/commit/cb50e41bb14430105833b845c54dfa00558dace9))
 * support user_group_guid/user_group_name filter on admin/users ([#251](https://github.com/databk/rustdesk-console/issues/251)) ([cfa8ac4](https://github.com/databk/rustdesk-console/commit/cfa8ac409d473bbb02673673b4218297c4ad80a3))
+* **sysinfo:** add system information module ([a7bf6f9](https://github.com/databk/rustdesk-console/commit/a7bf6f9773d03495b2f2fb416791cd7ccdf5eadc))
+* update default admin account creation logic ([#120](https://github.com/databk/rustdesk-console/issues/120)) ([6899302](https://github.com/databk/rustdesk-console/commit/68993029699c1e1891a30aa6b5547b5e32e681e6))
 * update logo link and make it clickable ([#257](https://github.com/databk/rustdesk-console/issues/257)) ([2678f33](https://github.com/databk/rustdesk-console/commit/2678f338972b106dc3a11e68db0394155dfa1eae))
-
-
-
-# [1.7.0](https://github.com/databk/rustdesk-console/compare/1.6.0...1.7.0) (2026-07-22)
-
-
-### Bug Fixes
-
-* **auth:** align login API with RustDesk client requirements ([#214](https://github.com/databk/rustdesk-console/issues/214)) ([3c2ae52](https://github.com/databk/rustdesk-console/commit/3c2ae52644dce52fe242b19b64ca3a2f7c782d30))
-* **auth:** prevent TFA secret exposure in login flow ([#221](https://github.com/databk/rustdesk-console/issues/221)) ([e3a7b0a](https://github.com/databk/rustdesk-console/commit/e3a7b0a998638712265aaca7bcdd96bbb2f17880))
-* **auth:** use server-generated secret for login flow control instead of user-controlled tfaCode ([#230](https://github.com/databk/rustdesk-console/issues/230)) ([dfa9250](https://github.com/databk/rustdesk-console/commit/dfa9250053f3d3016ee94b648fb19e263b8e7746))
-* disable unsafe type rules for test files in eslint config ([#226](https://github.com/databk/rustdesk-console/issues/226)) ([cd19d1e](https://github.com/databk/rustdesk-console/commit/cd19d1eea12d2dd3e8001ad8caaff4ce16113f83))
-* **sysinfo:** return SYSINFO_UPDATED and ID_NOT_FOUND responses ([#222](https://github.com/databk/rustdesk-console/issues/222)) ([3468e97](https://github.com/databk/rustdesk-console/commit/3468e972e7a531eb57d2120f72cded97af23756d))
-
-
-### Features
-
-* **ab:** support adding IP devices to address book ([#213](https://github.com/databk/rustdesk-console/issues/213)) ([2ba9295](https://github.com/databk/rustdesk-console/commit/2ba9295d9d9e699646ca69ff81e634b0de017699)), closes [#196](https://github.com/databk/rustdesk-console/issues/196)
-* add console settings and system metrics ([#227](https://github.com/databk/rustdesk-console/issues/227)) ([45fed76](https://github.com/databk/rustdesk-console/commit/45fed7634518255ca9b1cdf7acc36343c410dc85))
-* implement user groups and group-based address-book access ([#211](https://github.com/databk/rustdesk-console/issues/211)) ([1c9753c](https://github.com/databk/rustdesk-console/commit/1c9753c20f61de06f93035041160cc5201a4cce4))
-* **oidc:** add PATCH sort endpoint for provider ordering ([#229](https://github.com/databk/rustdesk-console/issues/229)) ([9ca9cbb](https://github.com/databk/rustdesk-console/commit/9ca9cbb38abcccf558f42bc675eb7ced81ced746))
-* separate private custom and shared address books ([#212](https://github.com/databk/rustdesk-console/issues/212)) ([0425d7f](https://github.com/databk/rustdesk-console/commit/0425d7fa4c2487567e0269cf0dfcfdbb8d81f147))
 * upgrade to Node.js 24, add ARM64 Docker build, and SEA support ([#210](https://github.com/databk/rustdesk-console/issues/210)) ([5b6eb96](https://github.com/databk/rustdesk-console/commit/5b6eb96d8ce699ce24634ec1bc27ae938f6e5365))
 * **user:** adapt display_name field in user APIs ([#215](https://github.com/databk/rustdesk-console/issues/215)) ([7daf01b](https://github.com/databk/rustdesk-console/commit/7daf01b2243bc3a04580c220254ed9dee12ab3cd))
+* **user:** add user entities and service ([74d1744](https://github.com/databk/rustdesk-console/commit/74d1744a173ce80a531c5baa4f75472cb18042b8))
 * **user:** add user group update to updateUser API ([#224](https://github.com/databk/rustdesk-console/issues/224)) ([1aecf6b](https://github.com/databk/rustdesk-console/commit/1aecf6bd2d5428f7df8e09ccb1dd23d367fd5ed2))
+* **user:** add user module with controller ([073aa43](https://github.com/databk/rustdesk-console/commit/073aa43b64c7b80f344cef5f84787151d11c1e19))
 * **user:** implement complete invite user flow ([#223](https://github.com/databk/rustdesk-console/issues/223)) ([0a966e4](https://github.com/databk/rustdesk-console/commit/0a966e466b04b4090e51d95385bb4194c6ffb3f4))
-
-
-
-# [1.6.0](https://github.com/databk/rustdesk-console/compare/1.5.1...1.6.0) (2026-07-15)
-
-
-### Bug Fixes
-
-* make SMTP username and password fields optional ([#194](https://github.com/databk/rustdesk-console/issues/194)) ([eae647c](https://github.com/databk/rustdesk-console/commit/eae647c464ddc08019c4f7063e7cd425ec7503c1)), closes [#193](https://github.com/databk/rustdesk-console/issues/193)
-* **update-check:** fix update check API URL and package.json path issues ([#207](https://github.com/databk/rustdesk-console/issues/207)) ([1d1bc6e](https://github.com/databk/rustdesk-console/commit/1d1bc6e92ec881c88d2c32ab129dba81cf686fad))
-
-
-### Features
-
-* add nexus module for custom client generation ([#192](https://github.com/databk/rustdesk-console/issues/192)) ([a8c0fcf](https://github.com/databk/rustdesk-console/commit/a8c0fcfede80ee2d5a591e283361540ddfa1edb3))
-* add update check module ([#182](https://github.com/databk/rustdesk-console/issues/182)) ([b952d41](https://github.com/databk/rustdesk-console/commit/b952d414071635675c328ce22cbbb1cf4e8ed64a))
-
-
-
-## [1.5.1](https://github.com/databk/rustdesk-console/compare/1.5.0...1.5.1) (2026-06-26)
-
-
-### Bug Fixes
-
-* map os field to standardized platform constants in /ab/peers response ([#178](https://github.com/databk/rustdesk-console/issues/178)) ([c1b0d67](https://github.com/databk/rustdesk-console/commit/c1b0d676717d7d93631d9d0358380d63d328775d)), closes [#175](https://github.com/databk/rustdesk-console/issues/175)
-* merge saved LDAP config when testing connection ([#180](https://github.com/databk/rustdesk-console/issues/180)) ([7390ca5](https://github.com/databk/rustdesk-console/commit/7390ca54a364c7f91933239ac72aeed6b68774d8))
-* specify varchar type for User.email column ([#181](https://github.com/databk/rustdesk-console/issues/181)) ([924bcda](https://github.com/databk/rustdesk-console/commit/924bcdaf6834b7face280e931db0070878767069))
-* store null instead of empty string for user email to avoid unique constraint violation ([#176](https://github.com/databk/rustdesk-console/issues/176)) ([cff06b7](https://github.com/databk/rustdesk-console/commit/cff06b77fbf009eab533730935f542ee8bc83395)), closes [#173](https://github.com/databk/rustdesk-console/issues/173)
-
-
-
-# [1.5.0](https://github.com/databk/rustdesk-console/compare/1.4.1...1.5.0) (2026-06-14)
-
-
-### Bug Fixes
-
-* align alarm audit query interface with file/connection audit ([#138](https://github.com/databk/rustdesk-console/issues/138)) ([825af6a](https://github.com/databk/rustdesk-console/commit/825af6a4dddb4fc02d1f37353d616dfb90072a99))
-
-
-### Features
-
-* add audit log auto-cleanup with configurable retention ([#143](https://github.com/databk/rustdesk-console/issues/143)) ([e83545a](https://github.com/databk/rustdesk-console/commit/e83545a0e13f4c097a2d24ba52a4b3a4fc52a143))
-* add LDAP authentication support ([#148](https://github.com/databk/rustdesk-console/issues/148)) ([efa90ec](https://github.com/databk/rustdesk-console/commit/efa90ecbf3766c7825f1a2f2a0f0d91814afb410)), closes [#135](https://github.com/databk/rustdesk-console/issues/135)
+* **workflow:** update release workflow to use manual trigger and conventional changelog ([#29](https://github.com/databk/rustdesk-console/issues/29)) ([afd3f72](https://github.com/databk/rustdesk-console/commit/afd3f728fcb41c7676e1c4d200451041cd607330))
 
 
 
