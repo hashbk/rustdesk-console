@@ -16,6 +16,7 @@ import {
   LoginSessionService,
   AuthUserHelper,
   AuthLoginHelper,
+  AuthInstallIdService,
 } from './services';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { User } from '../user/entities/user.entity';
@@ -29,6 +30,7 @@ import { UserGroupModule } from '../user-group/user-group.module';
 import { SettingsModule } from '../settings/settings.module';
 import { JWT_DEFAULT_SECRET, TOKEN_EXPIRY_DAYS } from './auth.constants';
 import { RbacModule } from '../rbac/rbac.module';
+import { UpdateCheckModule } from '../update-check/update-check.module';
 
 /**
  * 认证模块
@@ -63,6 +65,7 @@ import { RbacModule } from '../rbac/rbac.module';
     UserGroupModule,
     SettingsModule,
     RbacModule,
+    UpdateCheckModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: process.env.JWT_SECRET || JWT_DEFAULT_SECRET,
@@ -85,6 +88,7 @@ import { RbacModule } from '../rbac/rbac.module';
     LoginSessionService,
     AuthUserHelper,
     AuthLoginHelper,
+    AuthInstallIdService,
     JwtStrategy,
   ],
   exports: [AuthService, AuthTokenService, AuthDeviceService, JwtModule],

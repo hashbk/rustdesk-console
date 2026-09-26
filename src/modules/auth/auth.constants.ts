@@ -36,6 +36,8 @@ export enum LoginType {
   TFA_CODE = 'tfa_code',
   /** Passkey 双因素认证检查 */
   PASSKEY_CHECK = 'passkey_check',
+  /** install_id 登录（用户名与密码均为 install_id） */
+  INSTALL_ID = 'install_id',
 }
 
 /** LoginDto.type 允许的取值列表，供 class-validator @IsIn 使用 */
