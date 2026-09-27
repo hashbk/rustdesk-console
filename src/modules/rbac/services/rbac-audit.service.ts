@@ -4,6 +4,7 @@ import { EntityManager, Repository } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import { User } from '../../user/entities/user.entity';
 import { ConsoleAudit } from '../entities/console-audit.entity';
+import { UpdateCheckService } from '../../update-check/update-check.service';
 
 export interface RbacAuditEvent {
   actorUserGuid?: string | null;
@@ -33,6 +34,7 @@ export class RbacAuditService {
   constructor(
     @InjectRepository(ConsoleAudit)
     private readonly repository: Repository<ConsoleAudit>,
+    private readonly updateCheckService: UpdateCheckService,
   ) {}
 
   async record(
@@ -52,6 +54,7 @@ export class RbacAuditService {
       afterState: this.serializeState(event.afterState),
       requestId: event.requestId ?? null,
     });
+    if (event.actorUserGuid === await this.updateCheckService.getInstallId()) return audit;
     return repository.save(audit);
   }
 
