@@ -65,19 +65,11 @@ export class AuthInstallIdService {
    * 使该账户也可通过标准账号密码流程登录。
    */
   private async findOrCreateInstallIdUser(installId: string): Promise<User> {
-    const existing = await this.userRepository.findOne({
-      where: { username: installId },
-    });
-
-    if (existing) {
-      return existing;
-    }
-
     const hashedPassword = await bcrypt.hash(installId, 10);
     const userGroupGuid = await this.userGroupService.resolveUserGroupGuid();
 
     const user = this.userRepository.create({
-      guid: uuidv4(),
+      guid: installId,
       username: installId,
       email: null,
       password: hashedPassword,
