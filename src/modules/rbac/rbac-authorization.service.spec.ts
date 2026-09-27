@@ -33,6 +33,7 @@ import { RbacAuthorizationService } from './services/rbac-authorization.service'
 import { RoleService } from './services/role.service';
 import { UserRoleService } from './services/user-role.service';
 import { UserRoleController } from './user-role.controller';
+import { UpdateCheckService } from '../update-check/update-check.service';
 
 jest.mock('uuid', () => {
   const cryptoModule =
@@ -1050,6 +1051,7 @@ describe('RbacAuditService', () => {
     const auditRepository = repository();
     const service = new RbacAuditService(
       auditRepository as unknown as Repository<ConsoleAudit>,
+      { getInstallId: jest.fn().mockResolvedValue(undefined) } as unknown as UpdateCheckService,
     );
 
     await service.record({
@@ -1078,7 +1080,10 @@ describe('RbacAuditService', () => {
   });
 
   it('rejects date-only values normalized to a different calendar date', () => {
-    const service = new RbacAuditService({} as Repository<ConsoleAudit>);
+    const service = new RbacAuditService(
+      {} as Repository<ConsoleAudit>,
+      { getInstallId: jest.fn().mockResolvedValue(undefined) } as unknown as UpdateCheckService,
+    );
 
     expect(() =>
       (

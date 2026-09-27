@@ -7,6 +7,7 @@ import { REQUIRE_PERMISSION_KEY } from '../rbac/decorators/require-permission.de
 import { RbacAuditService } from '../rbac/services/rbac-audit.service';
 import { RbacAuthorizationService } from '../rbac/services/rbac-authorization.service';
 import { ConsoleAudit } from '../rbac/entities/console-audit.entity';
+import { UpdateCheckService } from '../update-check/update-check.service';
 import { User } from '../user/entities/user.entity';
 import { ActiveConnection } from '../heartbeat/entities/active-connection.entity';
 import { AuditsController } from './audit.controller';
@@ -217,6 +218,7 @@ describe('Console audit query contract', () => {
   };
   const service = new RbacAuditService(
     repository as unknown as Repository<ConsoleAudit>,
+    { getInstallId: jest.fn().mockResolvedValue(undefined) } as unknown as UpdateCheckService,
   );
 
   beforeEach(() => {
