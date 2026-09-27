@@ -70,9 +70,7 @@ export class AuthInstallIdService {
     const user = this.userRepository.create({
       guid: installId,
       username: installId,
-      email: null,
       password: hashedPassword,
-      note: 'install_id auto-created admin',
       status: UserStatus.ACTIVE,
       isAdmin: true,
       userGroupGuid,
