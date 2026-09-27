@@ -15,6 +15,7 @@ import { RbacAuditService } from './services/rbac-audit.service';
 import { RbacAuthorizationService } from './services/rbac-authorization.service';
 import { RoleService } from './services/role.service';
 import { UserRoleService } from './services/user-role.service';
+import { UpdateCheckModule } from '../update-check/update-check.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UserRoleService } from './services/user-role.service';
       DeviceGroup,
       Peer,
     ]),
+    UpdateCheckModule,
   ],
   controllers: [PermissionController, RoleController, UserRoleController],
   providers: [

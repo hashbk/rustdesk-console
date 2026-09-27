@@ -6,7 +6,6 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
-import { v4 as uuidv4 } from 'uuid';
 import { User, UserStatus } from '../../user/entities/user.entity';
 import { UpdateCheckService } from '../../update-check/update-check.service';
 import { UserGroupService } from '../../user-group/user-group.service';
