@@ -180,9 +180,10 @@ export class RbacAuditService {
 
   private boundCurrent(value: number | undefined): number {
     const DEFAULT_CURRENT = 1;
+    const MAX_CURRENT = 100000;
     if (value === undefined || value === null) return DEFAULT_CURRENT;
     if (!Number.isFinite(value) || value <= 0) return DEFAULT_CURRENT;
-    return Math.floor(value);
+    return Math.min(Math.floor(value), MAX_CURRENT);
   }
 
   private parseDate(
@@ -193,15 +194,15 @@ export class RbacAuditService {
     const isDateOnly = /^\d{4}-\d{2}-\d{2}$/.test(value);
     if (!isDateOnly && !/(?:Z|[+-]\d{2}:?\d{2})$/i.test(value)) {
       throw new BadRequestException(
-        `${field} 必须包含 UTC 标识（Z）或时区偏移量`,
+        `${field} must include a UTC designator (Z) or a timezone offset`,
       );
     }
     const parsed = new Date(isDateOnly ? `${value}T00:00:00.000Z` : value);
     if (Number.isNaN(parsed.getTime())) {
-      throw new BadRequestException(`${field} 不是有效的日期字符串`);
+      throw new BadRequestException(`${field} is not a valid date string`);
     }
     if (isDateOnly && parsed.toISOString().slice(0, 10) !== value) {
-      throw new BadRequestException(`${field} 不是有效的日期字符串`);
+      throw new BadRequestException(`${field} is not a valid date string`);
     }
     return parsed;
   }

@@ -33,19 +33,19 @@ import { RbacModule } from '../rbac/rbac.module';
 import { UpdateCheckModule } from '../update-check/update-check.module';
 
 /**
- * 认证模块
- * 负责用户认证、授权和令牌管理
+ * Auth module
+ * Handles user authentication, authorization, and token management
  *
- * 导入模块：
+ * Imported modules:
  * - TypeOrmModule
  * - JwtModule
  * - MailerModule
  *
- * 导出服务：
+ * Exported services:
  * - AuthService
  * - JwtStrategy
  *
- * 提供服务：
+ * Provided services:
  * - AuthService
  * - JwtStrategy
  * - JwtAuthGuard

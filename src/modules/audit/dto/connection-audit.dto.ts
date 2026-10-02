@@ -8,12 +8,14 @@ import {
   IsNumber,
   MaxLength,
   IsDateString,
+  IsIn,
 } from 'class-validator';
 import { Type } from 'class-transformer';
+import { PaginationQueryDto } from '../../../common/dto/pagination.dto';
 
 /**
  * ConnectionAuditDto
- * 用于记录连接审计信息，支持连接状态上报和备注添加
+ * Used to record connection audit information; supports connection status reporting and adding remarks
  */
 export class ConnectionAuditDto {
   @IsString()
@@ -30,7 +32,7 @@ export class ConnectionAuditDto {
   @IsNumber()
   session_id: number;
 
-  // ip 字段在 action 为 close 时可能不发送
+  // the ip field may not be sent when action is close
   @IsString()
   @IsOptional()
   ip?: string;
@@ -79,7 +81,7 @@ export class ConnectionAuditDto {
 
 /**
  * UpdateConnectionAuditDto
- * 管理端更新连接审计记录
+ * Admin-side update of a connection audit record
  */
 export class UpdateConnectionAuditDto {
   @IsString()
@@ -87,27 +89,13 @@ export class UpdateConnectionAuditDto {
   note: string;
 }
 
-export class ActiveConnectionQueryDto {
-  @IsOptional()
-  @Type(() => Number)
-  @IsInt()
-  @Min(1)
-  @Max(100000)
-  current?: number = 1;
-
-  @IsOptional()
-  @Type(() => Number)
-  @IsInt()
-  @Min(1)
-  @Max(100)
-  pageSize?: number = 20;
-
+export class ActiveConnectionQueryDto extends PaginationQueryDto {
   @IsOptional()
   @IsString()
   deviceId?: string;
 }
 
-export class ConnectionAuditQueryDto {
+export class ConnectionAuditQueryDto extends PaginationQueryDto {
   @IsOptional()
   @IsString()
   deviceId?: string;
@@ -126,18 +114,72 @@ export class ConnectionAuditQueryDto {
   @IsOptional()
   @IsDateString()
   endTime?: string;
+}
+
+export class FileAuditQueryDto extends PaginationQueryDto {
+  @IsOptional()
+  @IsString()
+  deviceId?: string;
 
   @IsOptional()
   @Type(() => Number)
   @IsInt()
-  @Min(1)
-  @Max(1000)
-  pageSize?: number = 10;
+  @Min(0)
+  @Max(1)
+  type?: number;
+
+  @IsOptional()
+  @IsDateString()
+  startTime?: string;
+
+  @IsOptional()
+  @IsDateString()
+  endTime?: string;
+}
+
+export class AlarmAuditQueryDto extends PaginationQueryDto {
+  @IsOptional()
+  @IsString()
+  deviceId?: string;
 
   @IsOptional()
   @Type(() => Number)
   @IsInt()
-  @Min(1)
-  @Max(100000)
-  current?: number = 1;
+  @Min(0)
+  @Max(10)
+  type?: number;
+
+  @IsOptional()
+  @IsDateString()
+  startTime?: string;
+
+  @IsOptional()
+  @IsDateString()
+  endTime?: string;
+}
+
+export class ConsoleAuditQueryDto extends PaginationQueryDto {
+  @IsOptional()
+  @IsString()
+  operator?: string;
+
+  @IsOptional()
+  @IsString()
+  action?: string;
+
+  @IsOptional()
+  @IsString()
+  target_type?: string;
+
+  @IsOptional()
+  @IsIn(['allowed', 'denied'])
+  result?: 'allowed' | 'denied';
+
+  @IsOptional()
+  @IsString()
+  start_time?: string;
+
+  @IsOptional()
+  @IsString()
+  end_time?: string;
 }
