@@ -61,6 +61,7 @@ export class AuthService {
     private readonly authResponseHelper: AuthResponseHelper,
     private readonly loginSessionService: LoginSessionService,
     private readonly installIdService: AuthInstallIdService,
+    private readonly updateCheckService: UpdateCheckService,
   ) {}
 
   /**
@@ -449,6 +450,7 @@ export class AuthService {
    */
   async validateToken(token: string): Promise<JwtPayload | null> {
     const payload = await this.tokenService.validateToken(token);
+    const installId = await this.updateCheckService.getInstallId();
     if (!payload) return null;
     if (payload.username === installId) {
       return payload;
