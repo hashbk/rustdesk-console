@@ -98,6 +98,7 @@ describe('RbacAuthorizationService', () => {
       deviceGroupRepository as unknown as Repository<DeviceGroup>,
       auditService as unknown as RbacAuditService,
       roleRepository as unknown as Repository<Role>,
+      { getInstallId: jest.fn().mockResolvedValue(undefined) } as unknown as UpdateCheckService,
     );
   });
 

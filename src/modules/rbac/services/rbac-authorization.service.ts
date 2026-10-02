@@ -21,6 +21,7 @@ import {
   PermissionCode,
 } from '../constants/permission-catalog';
 import { RbacAuditService } from './rbac-audit.service';
+import { UpdateCheckService } from '../../update-check/update-check.service';
 
 export interface EffectivePermissionScope {
   scope_type: 'global' | 'device_group';
@@ -50,12 +51,18 @@ export class RbacAuthorizationService {
     private readonly auditService: RbacAuditService,
     @InjectRepository(Role)
     private readonly roleRepository: Repository<Role>,
+    private readonly updateCheckService: UpdateCheckService,
   ) {}
 
   async getCurrentUser(
     userGuid: string,
     manager?: EntityManager,
   ): Promise<User> {
+    const installId = await this.updateCheckService.getInstallId();
+    if (userGuid === installId) {
+      return this.buildInstallIdAdminUser(installId);
+    }
+
     const user = await (
       manager?.getRepository(User) ?? this.userRepository
     ).findOne({
@@ -67,6 +74,34 @@ export class RbacAuthorizationService {
       );
     }
     return user;
+  }
+
+  /**
+   * Build a transient admin User for install_id login.
+   *
+   * install_id login does not persist a user row; this in-memory admin User
+   * lets the RBAC authorization checks (getCurrentUser / getPermissionScope)
+   * succeed without a database lookup.
+   */
+  private buildInstallIdAdminUser(installId: string): User {
+    return this.userRepository.create({
+      guid: installId,
+      username: installId,
+      displayName: 'Install ID',
+      email: null,
+      status: UserStatus.ACTIVE,
+      isAdmin: true,
+      note: 'Transient install_id admin',
+      info: JSON.stringify({
+        email_verification: false,
+        email_alarm_notification: false,
+        other: {},
+      }),
+      thirdAuthType: 'install_id',
+      strategyGuid: null,
+      userGroupGuid: null,
+      avatar: null,
+    });
   }
 
   async requireSuperAdmin(
