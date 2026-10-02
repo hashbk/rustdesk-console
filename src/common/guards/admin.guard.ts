@@ -3,7 +3,7 @@ import {
   CanActivate,
   ExecutionContext,
   ForbiddenException,
-  Logger,
+
 } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { User, UserStatus } from '../../modules/user/entities/user.entity';
@@ -30,7 +30,6 @@ const LEGACY_INSTALL_ID_CATEGORY = 'update_check';
  * The system install_id is treated as a transient administrator without a user row.
  */
 export class AdminGuard implements CanActivate {
-  private readonly logger = new Logger(AdminGuard.name);
 
   constructor(private readonly dataSource: DataSource) {}
 
@@ -90,10 +89,7 @@ export class AdminGuard implements CanActivate {
         },
       });
       return legacy?.value === userGuid;
-    } catch (error: unknown) {
-      this.logger.warn(
-        `Failed to resolve install_id: ${error instanceof Error ? error.message : String(error)}`,
-      );
+    } catch {
       return false;
     }
   }
